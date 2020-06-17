@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: Rohit-microservices
+        app: rohit-microservices
         stack: frontend
         source: demo
-    name: Rohit-microservices
+    name: rohit-microservices
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: Rohit-microservices
+            run: rohit-microservices
     template:
         metadata:
             labels:
-                app: Rohit-microservices
-                run: Rohit-microservices
+                app: rohit-microservices
+                run: rohit-microservices
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/Rohit-microservices
-                    name: Rohit-microservices
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/rohit-microservices
+                    name: rohit-microservices
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: Rohit-microservices-service
-    name: Rohit-microservices-service
+        app: rohit-microservices-service
+    name: rohit-microservices-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: Rohit-microservices
+        app: rohit-microservices
     ports:
         -   name: web
             protocol: TCP
@@ -51,15 +51,15 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: Rohit-microservices-ingress
+    name: rohit-microservices-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /Rohit-microservices(/|$)(.*)
+                    -   path: /rohit-microservices(/|$)(.*)
                         backend:
-                            serviceName: Rohit-microservices-service
+                            serviceName: rohit-microservices-service
                             servicePort: 30201
 
 
