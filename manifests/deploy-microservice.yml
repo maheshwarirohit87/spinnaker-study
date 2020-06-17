@@ -20,7 +20,7 @@ spec:
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/rohit-microservices
+                -   image: 465848653329.dkr.ecr.us-west-2.amazonaws.com/rohit-microservices
                     name: rohit-microservices
                     ports:
                         -   name: web
