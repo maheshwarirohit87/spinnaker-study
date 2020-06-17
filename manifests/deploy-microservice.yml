@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: Rohit-microservices-microservice
+        app: Rohit-microservices
         stack: frontend
         source: demo
-    name: Rohit-microservices-microservice
+    name: Rohit-microservices
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: Rohit-microservices-microservice
+            run: Rohit-microservices
     template:
         metadata:
             labels:
-                app: Rohit-microservices-microservice
-                run: Rohit-microservices-microservice
+                app: Rohit-microservices
+                run: Rohit-microservices
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/Rohit-microservices-microservice
-                    name: Rohit-microservices-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/Rohit-microservices
+                    name: Rohit-microservices
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: Rohit-microservices-microservice-service
-    name: Rohit-microservices-microservice-service
+        app: Rohit-microservices-service
+    name: Rohit-microservices-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: Rohit-microservices-microservice
+        app: Rohit-microservices
     ports:
         -   name: web
             protocol: TCP
@@ -59,7 +59,7 @@ spec:
                 paths:
                     -   path: /Rohit-microservices(/|$)(.*)
                         backend:
-                            serviceName: Rohit-microservices-microservice-service
+                            serviceName: Rohit-microservices-service
                             servicePort: 30201
 
 
